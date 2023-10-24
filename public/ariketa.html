@@ -52,10 +52,21 @@
             <option value="Female" selected>Female</option>
             <option value="Other">Other</option>
           </select> <br><br>
-        Date of Birth: <input type="text" name="d_o_b"> <br><br>
-        Address: <input type="text" name="address"> <br><br>
+        Date of Birth: <input type="date" name="d_o_b"> <br><br>
+        Address: <textarea name="textarea" rows="4" cols="60"></textarea>> <br><br>
         City: <input type="text" name="city"> <br><br>
-        <input type="submit" value="Bidali">
+        Zip Code: <input type="text" name="zip_code"> <br><br>
+        I agree to the terms and conditions: <input type="checkbox" id="cbox1" value="first_checkbox" /> <br><br>
+        <fieldset style="width:270px">
+            <legend>I want to receive the newsletter:</legend>
+            <div>
+              <input type="radio" id="yes" name="yes" value="yes" checked />
+              <label for="yes">Yes</label>
+              <input type="radio" id="no" name="no" value="no" />
+              <label for="no">No</label>
+            </div>
+          </fieldset> <br><br>
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>
