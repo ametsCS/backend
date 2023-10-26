@@ -20,7 +20,22 @@ app.get('/bezero', function(req, res) {
 
 // bezeroa POST
 app.post("/bezeroa", function(req,res) {
-    res.send(`Kaixo ${req.body.izena} ${req.body.abizena}`);
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const c_password = req.body.c_password;
+    const gender = req.body.gender;
+    const dob = req.body.d_o_b;
+    const address = req.body.address;
+    const city = req.body.city;
+    const zip_code = req.body.zip_code;
+    const checkbox = req.body.checkbox;
+    const radioB = req.body.radio;
+    
+    
+    res.send(`{"name":"${name}", "email":"${email}", "password":"${password}", "confirm-password":"${c_password}", 
+    "gender":"${gender}", "dob":"${dob}", "address":"${address}", "city":"${city}", "zip":"${zip_code}", 
+    "agree":"${checkbox}", "newsletter":"${radioB}"}`);
 });
 
 
