@@ -9,21 +9,33 @@
 
         // see Constraint Validation API 
         // https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation
-
+        
         let check = () => {
             
             let bidaltzekoOK = true;
 
-            let abizen = document.getElementById("abizena");
-            abizen.setCustomValidity("");
+            let email = document.getElementById("email");
+            email.setCustomValidity("");
 
-            let abizena = abizen.value;
-            let abizenaRegex = /^[A-Z][a-z]+$/;
-            if (abizenaRegex.test(abizena)) {
-                document.getElementById("abizena").style.backgroundColor = "green";
+            let emaila = email.value;
+            let emailaRegex =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (emailaRegex.test(emaila)) {
+                
             } else {
-                document.getElementById("abizena").style.backgroundColor = "red";
-                abizen.setCustomValidity("Soilik letrak onartzen dira eta lehenengo letra larria izan behar da");
+                email.setCustomValidity("Please include an '@' in the email address. '" + emaila +"' is missing an '@'.");
+                bidaltzekoOK = false;
+            }
+
+            let password = document.getElementById("password");
+            let confPassword = document.getElementById("c_password");
+
+            let passworda = password.value;
+            let confPassworda = confPassword.value;
+            
+            if (passworda == confPassworda){
+                
+            }else{
+                confPassword.setCustomValidity("Passwords don't match");
                 bidaltzekoOK = false;
             }
 
@@ -31,7 +43,6 @@
         }
 
         window.onload = () => {
-            document.getElementById("abizena").oninput = check;
             document.querySelector("#formularioa").addEventListener("submit", (e) => {
                 e.preventDefault();
                 if (check()) e.target.submit();
@@ -43,18 +54,18 @@
 <body>
     <form action="/bezeroa" method="POST" id="formularioa">
         <h1>User Registration Form</h1>
-        Name: <input type="text" name="name" required> <br><br>
-        Email: <input type="text" name="email"> <br><br>
-        Password: <input type="text" name="password"> <br><br>
-        Confirm Password: <input type="text" name="c_password"> <br><br>
-        Gender: <select name="gender">
-            <option value="Male">Male</option>
-            <option value="Female" selected>Female</option>
+        Name: <input type="text" name="name" id="name" required> <br><br>
+        Email: <input type="text" name="email" id="email" required> <br><br>
+        Password: <input type="password" name="password" id="password" required> <br><br>
+        Confirm Password: <input type="password" name="c_password" id="c_password" required> <br><br>
+        Gender: <select name="gender" id="gender">
+            <option value="Male" selected>Male</option>
+            <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select> <br><br>
-        Date of Birth: <input type="date" name="d_o_b"> <br><br>
+        Date of Birth: <input type="date" name="d_o_b" id="d_o_b" required> <br><br>
         Address: <textarea name="textarea" rows="4" cols="60"></textarea>> <br><br>
-        City: <input type="text" name="city"> <br><br>
+        City: <input type="text" name="city" required> <br><br>
         Zip Code: <input type="text" name="zip_code"> <br><br>
         I agree to the terms and conditions: <input type="checkbox" id="cbox1" value="first_checkbox" /> <br><br>
         <fieldset style="width:270px">
